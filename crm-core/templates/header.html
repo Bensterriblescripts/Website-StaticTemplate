@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>{{ static_variables.business_name }} | {{ pagename }}</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="CRM for {{ static_variables.business_name }}">
+        <meta name="author" content="{{ static_variables.business_name }}">
+        <meta name="keywords" content="CRM, {{ static_variables.business_name }}, Business">
+        <meta name="robots" content="index, follow">
+        <meta name="googlebot" content="index, follow">
+        <meta name="bingbot" content="index, follow">
+
+        <!-- Preload -->
+        <link rel="preload" href="/static/styles.css" as="style">
+        <link rel="preload" href="/static/0-pre.js" as="script">
+
+        <!-- Static Files -->
+        <link rel="stylesheet" href="/static/styles.css">
+        <script src="/static/0-pre.js"></script>
+    </head>
+    <body>
+
+        <!-- Header -->
+        <h1 class="pageTitle noselect">{{ pagename }}</h1>
+        <h3 class="pageSubTitle noselect">{{ static_variables.business_name }}</h3>
+
+        <!-- Navigation Bar -->
+        <div id="navigationBar" class="noselect">            
+            {% for menu in navbar.menus %}
+                <div class="navigationDropdown">
+                    <button id="menubutton_{{ menu.label }}" class="dropdownButton" type="button" link="{{ menu.path }}" onclick="redirect('{{ menu.path }}')">
+                        {{ menu.label }}
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <!-- System Messages -->
+        <div id="infoMessage" style="" class="noselect"></div>
+        <div id="errorMessage" style="" class="noselect"></div>
+
+        <!-- Main -->
+        <div id="main-wrapper">

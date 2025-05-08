@@ -21,7 +21,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    height: 300px;
+    height: 200px;
     margin-left: -12rem;
 }
 #main-wrapper {
@@ -30,6 +30,7 @@ body {
     margin-top: 1.5rem;
     font-size: 20px;
     text-align: center;
+    color: #402a1a;
 }
 .noselect {
     -webkit-user-select: none;
@@ -108,8 +109,6 @@ body {
     height: 3rem;
     border-radius: 5px;
     text-align: left;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     font-size: 18px;
 }
 .navigationDropdown {
@@ -129,4 +128,81 @@ body {
 }
 .dropdownButton:hover {
     background-color: rgba(255, 255, 255, 0.623);
+}
+
+/* Home */
+.tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    background: #f0f0f0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1.5px 4px rgba(0,0,0,0.06);
+    padding: 1rem;
+    margin-inline: auto;
+    max-width: 70%;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+#bannerImage {
+    transform: scale(0.9);
+    height: 250px;
+    border-radius: 5px;
+}
+#contactContent {
+    margin: 0;
+    color: inherit;
+    text-decoration: none;
+}
+#contactContent a {
+    color: inherit;
+    text-decoration: none;
+}
+#contactContent a:hover {
+    text-decoration: underline;
+}
+
+/* Photos Grid */
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.photos-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.photos-grid img:hover {
+    transform: scale(1.02);
+}
+
+/* Contact Page */
+.contactPageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.contactPageTitle {
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+}
+.contactPageContent {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+.contactPageContent a {
+    color: inherit;
+    text-decoration: none;
+}
+.contactPageContent a:hover {
+    text-decoration: underline;
 }

@@ -1,9 +1,15 @@
 use askama::Template;
 
+// Static Variables
 #[derive(Clone)]
 pub struct StaticVariables {
     pub business_name: String,
     pub website_domain: String,
+}
+// State
+#[derive(Clone)]
+pub struct AppState {
+    pub static_variables: StaticVariables,
 }
 
 // Page Templates
@@ -23,12 +29,5 @@ pub struct PhotosTemplate {
 #[template(path = "contact.html")]
 pub struct ContactTemplate {
     pub pagename: String,
-    pub static_variables: StaticVariables,
-}
-
-
-// States
-#[derive(Clone)]
-pub struct AppState {
     pub static_variables: StaticVariables,
 }

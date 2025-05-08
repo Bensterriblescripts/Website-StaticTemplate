@@ -116,18 +116,23 @@ body {
     height: 100%;
 }
 .dropdownButton {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;
-    background-color: #F1B3C0;
-    transition: background-color 0.2s ease;
-    padding: 0.5rem 1rem;
-    width: 7rem;
-    height: 100%;
+    width: 100%;
+    font-size: 1.05em;
+    font-weight: 500;
+    padding: 13px 0;
+    margin-bottom: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    background: #F1B3C0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    color: #402a1a;
+    transition: background 0.18s, box-shadow 0.18s;
+    letter-spacing: 0.01em;
 }
-.dropdownButton:hover {
-    background-color: rgba(255, 255, 255, 0.623);
+.dropdownButton:hover,
+.dropdownButton:active {
+    background: #f7c7d3;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
 }
 
 /* Home */
@@ -206,3 +211,61 @@ body {
 .contactPageContent a:hover {
     text-decoration: underline;
 }
+
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    #titleBar {
+        margin: 0;
+    }
+    #navigationBar {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        margin: 0 auto;
+        height: auto;
+        background: none;
+    }
+    .dropdownButton {
+        width: 100%;
+        font-size: 1em;
+        padding: 10px 0;
+        margin-bottom: 5px;
+        border: 1px solid grey;
+        border-radius: 5px;
+        background-color: #F1B3C0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    }
+    .navigationDropdown {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-inline: auto;
+        width: 60%;
+        height: 50%;
+        display: block;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+    }
+  
+    /* Home */
+    #bannerContainer, #descContainer, #contactContainer {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+      margin: 0 auto 20px auto;
+      padding: 10px;
+    }
+    #bannerImageContainer img,
+    #bannerImage {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+  }

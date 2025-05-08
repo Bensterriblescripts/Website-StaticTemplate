@@ -27,9 +27,6 @@ pub async fn start(static_variables: StaticVariables) {
     let state = AppState {
         static_variables,
     };
-    let cors = CorsLayer::new()
-        .allow_methods([axum::http::Method::GET, axum::http::Method::POST])
-        .allow_headers([axum::http::header::CONTENT_TYPE]);
 
     // Router
     let app = Router::new() 
@@ -40,15 +37,9 @@ pub async fn start(static_variables: StaticVariables) {
         .route("/health", get(health_check))
         .nest_service("/static", tower_http::services::ServeDir::new("templates/static"))
 
-        .layer(SetResponseHeaderLayer::overriding(
-            axum::http::header::CONTENT_SECURITY_POLICY,
-            HeaderValue::from_static("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"), // This will likely require a partial navbar overhaul to do correctly
-        ))
-        .layer(cors)
-
         .with_state(state);
 
-    let listener = match tokio::net::TcpListener::bind("0.0.0.0:9050").await {
+    let listener = match tokio::net::TcpListener::bind(address).await {
         Ok(listener) => {
             println!("Passed :: Web Service");
 

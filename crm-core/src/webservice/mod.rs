@@ -29,7 +29,7 @@ pub async fn start(static_variables: StaticVariables) {
     };
     let cors = CorsLayer::new()
         .allow_methods([axum::http::Method::GET, axum::http::Method::POST])
-        .allow_headers([axum::http::header::CONTENT_TYPE])
+        .allow_headers([axum::http::header::CONTENT_TYPE]);
 
     // Router
     let app = Router::new() 

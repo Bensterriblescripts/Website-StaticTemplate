@@ -48,7 +48,7 @@ pub async fn start(static_variables: StaticVariables) {
 
         .with_state(state);
 
-    let listener = match tokio::net::TcpListener::bind(address).await {
+    let listener = match tokio::net::TcpListener::bind("0.0.0.0:9050").await {
         Ok(listener) => {
             println!("Passed :: Web Service");
 

@@ -6,10 +6,11 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.ico">
 
-        <meta name="description" content="CRM for {{ static_variables.business_name }}">
+        <meta name="description" content="Business Page for {{ static_variables.business_name }}">
         <meta name="author" content="{{ static_variables.business_name }}">
-        <meta name="keywords" content="CRM, {{ static_variables.business_name }}, Business">
+        <meta name="keywords" content="Business Page, {{ static_variables.business_name }}, Business">
         <meta name="robots" content="index, follow">
         <meta name="googlebot" content="index, follow">
         <meta name="bingbot" content="index, follow">
@@ -23,20 +24,28 @@
         <script src="/static/0-pre.js"></script>
     </head>
     <body>
+        
 
         <!-- Header -->
-        <h1 class="pageTitle noselect">{{ static_variables.business_name }}</h1>
-        <h3 class="pageSubTitle noselect">{{ pagename }}</h3>
+        <div id="titleBar"></div>
 
         <!-- Navigation Bar -->
         <div id="navigationBar" class="noselect">            
-            {% for menu in navbar.menus %}
-                <div class="navigationDropdown">
-                    <button id="menubutton_{{ menu.label }}" class="dropdownButton" type="button" link="{{ menu.path }}" onclick="redirect('{{ menu.path }}')">
-                        {{ menu.label }}
-                    </button>
-                </div>
-            {% endfor %}
+            <div class="navigationDropdown">
+                <button id="menubutton_Home" class="dropdownButton" type="button" link="/" onclick="redirect('/')">
+                    Home
+                </button>
+            </div>
+            <div class="navigationDropdown">
+                <button id="menuButton_Photos" class="dropdownButton" type="button" link="/photos" onclick="redirect('/photos')">
+                    Photos
+                </button>
+            </div>
+            <div class="navigationDropdown">
+                <button id="menuButton_Contact" class="dropdownButton" type="button" link="/contact" onclick="redirect('/contact')">
+                    Contact
+                </button>
+            </div>
         </div>
         
         <!-- System Messages -->

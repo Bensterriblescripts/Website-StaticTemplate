@@ -4,16 +4,25 @@
 }
 body {
     text-align: center;
-    background-color: #1b1b1b;
+    background-color: #dbdbdb;
 
     max-width: 100vw;
     margin-inline: auto;
 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
+    color: rgb(241, 241, 241);
     margin: 0;
     padding: 0;
     height: 100vh;
+}
+#titleBar {
+    background-image: url('/static/logo_whiteback.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 300px;
+    margin-left: -12rem;
 }
 #main-wrapper {
     max-width: 95vw;
@@ -94,13 +103,14 @@ body {
 
 #navigationBar {
     display: inline-block;
-    background-color: rgb(196, 193, 193);
-    width: 80%;
+    background-color: #F1B3C0;
+    width: 70%;
     height: 3rem;
     border-radius: 5px;
     text-align: left;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    font-size: 18px;
 }
 .navigationDropdown {
     display: inline-block;
@@ -108,13 +118,14 @@ body {
 }
 .dropdownButton {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 22px;
-    background-color: rgb(196, 193, 193);
+    font-size: 18px;
+    background-color: #F1B3C0;
     transition: background-color 0.2s ease;
     padding: 0.5rem 1rem;
     width: 7rem;
     height: 100%;
     border: none;
+    border-radius: 5px;
 }
 .dropdownButton:hover {
     background-color: rgba(255, 255, 255, 0.623);

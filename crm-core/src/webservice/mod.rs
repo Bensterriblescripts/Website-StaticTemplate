@@ -1,10 +1,10 @@
 use crate::webservice_types::{
     StaticVariables,
     AppState,
-    NavbarTemplate,
 
     IndexTemplate,
-    AboutTemplate,
+    PhotosTemplate,
+    ContactTemplate,
 };
 
 // External Crates
@@ -20,12 +20,11 @@ use axum_extra::extract::CookieJar;
 use tower_http::{set_header::SetResponseHeaderLayer, cors::CorsLayer};
 
 /* Start Webservice */
-pub async fn start(navbar_template: NavbarTemplate, static_variables: StaticVariables) {
+pub async fn start(static_variables: StaticVariables) {
     println!("\n:: Web Service ::");
 
     let address = static_variables.website_domain.clone();
     let state = AppState {
-        navbar: navbar_template, 
         static_variables,
     };
 
@@ -42,12 +41,12 @@ pub async fn start(navbar_template: NavbarTemplate, static_variables: StaticVari
     // Router
     let app = Router::new() 
         .route("/", get(index))
-        .route("/health", get(health_check))
-        .route("/about", get(about))
+        .route("/photos", get(photos))
+        .route("/contact", get(contact))
 
+        .route("/health", get(health_check))
         .nest_service("/static", tower_http::services::ServeDir::new("templates/static"))
-        .nest_service("/store", tower_http::services::ServeDir::new("store"))
-        // Headers/Security
+
         .layer(SetResponseHeaderLayer::overriding(
             axum::http::header::CONTENT_SECURITY_POLICY,
             HeaderValue::from_static("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"), // This will likely require a partial navbar overhaul to do correctly
@@ -88,18 +87,24 @@ pub async fn start(navbar_template: NavbarTemplate, static_variables: StaticVari
 async fn index(State(state): State<AppState>, jar: CookieJar) -> impl IntoResponse {
     let template = IndexTemplate {
         static_variables: state.static_variables,
-        navbar: state.navbar,
         pagename: "Home".to_string(),
     };
 
     (jar, Html(template.render().unwrap())).into_response()
 }
-/* About */
-async fn about(State(state): State<AppState>, jar: CookieJar) -> impl IntoResponse {
-    let template = AboutTemplate {
+/* Photos */
+async fn photos(State(state): State<AppState>, jar: CookieJar) -> impl IntoResponse {
+    let template = PhotosTemplate {
         static_variables: state.static_variables,
-        navbar: state.navbar,
-        pagename: "About".to_string(),
+        pagename: "Photos".to_string(),
+    };
+    (jar, Html(template.render().unwrap())).into_response()
+}
+/* Contact */
+async fn contact(State(state): State<AppState>, jar: CookieJar) -> impl IntoResponse {
+    let template = ContactTemplate {
+        static_variables: state.static_variables,
+        pagename: "Contact".to_string(),
     };
     (jar, Html(template.render().unwrap())).into_response()
 }

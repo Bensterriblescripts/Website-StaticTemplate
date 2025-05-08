@@ -27,16 +27,9 @@ pub async fn start(static_variables: StaticVariables) {
     let state = AppState {
         static_variables,
     };
-
-    // Allowed Origins
-    let allowed_origins = [
-        HeaderValue::from_static("http://localhost:3000"),
-        HeaderValue::from_str(&format!("https://{}", address)).unwrap(),
-    ];
     let cors = CorsLayer::new()
         .allow_methods([axum::http::Method::GET, axum::http::Method::POST])
         .allow_headers([axum::http::header::CONTENT_TYPE])
-        .allow_origin(allowed_origins.to_owned());
 
     // Router
     let app = Router::new() 

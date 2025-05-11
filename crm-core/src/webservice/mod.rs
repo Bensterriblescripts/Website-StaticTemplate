@@ -11,13 +11,11 @@ use crate::webservice_types::{
 use askama::Template;
 use axum::{
     extract::State,
-    http::HeaderValue,
     response::{Html, IntoResponse},
     routing::get,
     Router, 
 };
 use axum_extra::extract::CookieJar;
-use tower_http::{set_header::SetResponseHeaderLayer, cors::CorsLayer};
 
 /* Start Webservice */
 pub async fn start(static_variables: StaticVariables) {
